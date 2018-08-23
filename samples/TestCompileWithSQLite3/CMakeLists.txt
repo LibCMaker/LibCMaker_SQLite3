@@ -94,7 +94,7 @@ option(SQLITE_ENABLE_FTS4
   "versions 3 and 4 of the full-text search engine" OFF
 )
 option(SQLITE_ENABLE_FTS5 "versions 5 of the full-text search engine" OFF)
-option(SQLITE_ENABLE_ICU "the ICU extension to SQLite to be added" ON)
+option(SQLITE_ENABLE_ICU "the ICU extension to SQLite to be added" OFF)
 option(SQLITE_ENABLE_JSON1
   "the JSON SQL functions are added to the build automatically" OFF
 )
