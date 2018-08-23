@@ -1,1 +1,1 @@
-CMake build scripts for SQLite.
+CMake build scripts for SQLite3.
