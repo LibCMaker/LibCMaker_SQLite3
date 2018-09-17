@@ -24,7 +24,7 @@
 # Based on the code from:
 # https://github.com/tamaskenez/sqlite3-cmake/blob/master/CMakeLists.txt
 
-cmake_minimum_required(VERSION 3.3)
+cmake_minimum_required(VERSION 3.4)
 
 # ICU is C++ library, then CXX lang. 
 project(sqlite3 CXX C)
