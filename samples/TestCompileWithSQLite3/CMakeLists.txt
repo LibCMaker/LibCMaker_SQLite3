@@ -75,6 +75,7 @@ endif()
 
 if(SQLITE_ENABLE_ICU)
   include(${LibCMaker_LIB_DIR}/LibCMaker_ICU/cmr_build_icu.cmake)
+  # NOTE: must be 'cmr_build_icu_host_tools.cmake' for Android and iOS.
 endif()
 
 include(${LibCMaker_LIB_DIR}/LibCMaker_SQLite3/cmr_build_sqlite3.cmake)

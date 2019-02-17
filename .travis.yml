@@ -254,7 +254,7 @@ build_android: &build_android
           -DANDROID_TOOLCHAIN=${cmr_ANDROID_TOOLCHAIN}
           -DANDROID_STL=${cmr_ANDROID_STL}
           -DANDROID_CPP_FEATURES="${cmr_ANDROID_CPP_FEATURES}"
-        -DSQLITE_ENABLE_ICU=ON
+        -DSQLITE_ENABLE_ICU=OFF
 
     - ${cmr_CMAKE_CMD} --build . -- ${cmr_JOBS}
 
