@@ -106,6 +106,8 @@ build_windows: &build_windows
 
     - PATH=${cmr_INSTALL_DIR}/bin:${PATH}
 
+    - cmr_WORKAROUND_CMD=pwd
+
   before_install:
     - cp -r ${cmr_SAMPLE_SRC_DIR} ${cmr_WORK_DIR}
     - mkdir ${cmr_SAMPLE_LIB_DIR}
@@ -144,6 +146,8 @@ build_windows: &build_windows
         -DSQLITE_ENABLE_ICU=ON
 
     - ${cmr_CMAKE_CMD} --build . --config ${cmr_CMAKE_BUILD_TYPE}
+
+    - ${cmr_WORKAROUND_CMD}
 
     - ${cmr_CTEST_CMD} --output-on-failure --build-config ${cmr_CMAKE_BUILD_TYPE}
 
@@ -330,6 +334,7 @@ jobs:
       env:
         - *build_windows_msvc_x64_env
         - cmr_BUILD_SHARED_LIBS=ON
+        - cmr_WORKAROUND_CMD="cp ${cmr_INSTALL_DIR}/bin/*.dll ${cmr_BUILD_DIR}/test/${cmr_CMAKE_BUILD_TYPE}/"
 
     - <<: *build_windows_msvc_x64
       name: "Windows, msvc, x64, static"
