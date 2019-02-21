@@ -1,3 +1,3 @@
-# LibCMaker_SQLite3 example
+# LibCMaker_ICU example
 
-TODO: make docs.
+See the main repository [LibCMaker](https://github.com/LibCMaker/LibCMaker) for the build instructions.
