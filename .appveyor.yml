@@ -208,7 +208,7 @@ build_script:
       -Dcmr_UNPACKED_DIR:PATH=%cmr_DOWNLOAD_DIR%\unpacked
         -DCMAKE_BUILD_TYPE:STRING=%cmr_CMAKE_BUILD_TYPE%
         -DBUILD_SHARED_LIBS:BOOL=%cmr_BUILD_SHARED_LIBS%
-      -DSQLITE_ENABLE_ICU=ON
+      -DSQLITE_ENABLE_ICU:BOOL=ON
       %cmr_GENERATOR% %cmr_GEN_PLATFORM% %cmr_GEN_TOOLSET% %cmr_CONFIG_TYPES% %cmr_STD_LIBS%
 
   - cmake --build . --config %cmr_CMAKE_BUILD_TYPE%
