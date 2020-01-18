@@ -31,11 +31,19 @@ This module will set the following variables if found:
 #]=======================================================================]
 
 # Look for the necessary header
-find_path(SQLite3_INCLUDE_DIR NAMES sqlite3.h)
+find_path(SQLite3_INCLUDE_DIR NAMES sqlite3.h
+  NO_CMAKE_ENVIRONMENT_PATH
+  NO_SYSTEM_ENVIRONMENT_PATH
+  NO_CMAKE_SYSTEM_PATH
+)
 mark_as_advanced(SQLite3_INCLUDE_DIR)
 
 # Look for the necessary library
-find_library(SQLite3_LIBRARY NAMES sqlite3 sqlite)
+find_library(SQLite3_LIBRARY NAMES sqlite3 sqlite
+  NO_CMAKE_ENVIRONMENT_PATH
+  NO_SYSTEM_ENVIRONMENT_PATH
+  NO_CMAKE_SYSTEM_PATH
+)
 mark_as_advanced(SQLite3_LIBRARY)
 
 # Extract version information from the header file
@@ -48,7 +56,8 @@ if(SQLite3_INCLUDE_DIR)
     unset(_ver_line)
 endif()
 
-include(${CMAKE_CURRENT_LIST_DIR}/FindPackageHandleStandardArgs.cmake)
+#include(${CMAKE_CURRENT_LIST_DIR}/FindPackageHandleStandardArgs.cmake)
+include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(SQLite3
     REQUIRED_VARS SQLite3_INCLUDE_DIR SQLite3_LIBRARY
     VERSION_VAR SQLite3_VERSION)
