@@ -39,7 +39,7 @@ find_path(SQLite3_INCLUDE_DIR NAMES sqlite3.h
 mark_as_advanced(SQLite3_INCLUDE_DIR)
 
 # Look for the necessary library
-find_library(SQLite3_LIBRARY NAMES sqlite3 sqlite
+find_library(SQLite3_LIBRARY NAMES sqlite3 sqlite sqlite3d sqlited
   NO_CMAKE_ENVIRONMENT_PATH
   NO_SYSTEM_ENVIRONMENT_PATH
   NO_CMAKE_SYSTEM_PATH
