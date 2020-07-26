@@ -28,6 +28,11 @@
       "fed8b1c04c63ce200773586422c9976b54f408cc")
   endif()
 
+  if(version VERSION_EQUAL "3.32.3")
+    set(arch_file_sha
+      "0c805bea134712a903290a26b2a61c3a8a3bd8cc")
+  endif()
+
   include(cmr_get_version_parts)
   cmr_get_version_parts(${version} major minor patch tweak)
   foreach(ver_part minor patch tweak)
@@ -39,7 +44,8 @@
   set(ver_code "${major}${minor}${patch}${tweak}")
 
   # https://www.sqlite.org/2018/sqlite-amalgamation-3240000.zip
-  set(base_url "https://www.sqlite.org/2018")
+  # https://www.sqlite.org/2020/sqlite-amalgamation-3320300.zip
+  set(base_url "https://www.sqlite.org/2020")
   set(src_dir_name    "sqlite-${version}")
   set(arch_file_name  "${src_dir_name}.zip")
   set(unpack_to_dir   "${unpacked_dir}/${src_dir_name}")
