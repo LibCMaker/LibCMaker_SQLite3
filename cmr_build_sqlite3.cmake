@@ -29,9 +29,9 @@
 # Lib's name, version, paths
 #-----------------------------------------------------------------------
 
-set(SQLITE3_lib_NAME      "SQLite3")
-set(SQLITE3_lib_VERSION   "3.24.0")
-set(SQLITE3_lib_DIR       "${CMAKE_CURRENT_LIST_DIR}")
+set(SQLITE3_lib_NAME "SQLite3")
+set(SQLITE3_lib_VERSION "3.32.3" CACHE STRING "SQLITE3_lib_VERSION")
+set(SQLITE3_lib_DIR "${CMAKE_CURRENT_LIST_DIR}" CACHE PATH "SQLITE3_lib_DIR")
 
 # To use our Find<LibName>.cmake.
 list(APPEND CMAKE_MODULE_PATH "${SQLITE3_lib_DIR}/cmake/modules")
@@ -41,7 +41,7 @@ list(APPEND CMAKE_MODULE_PATH "${SQLITE3_lib_DIR}/cmake/modules")
 # LibCMaker_<LibName> specific vars and options
 #-----------------------------------------------------------------------
 
-set(COPY_SQLITE3_CMAKE_BUILD_SCRIPTS ON)
+option(COPY_SQLITE3_CMAKE_BUILD_SCRIPTS "COPY_SQLITE3_CMAKE_BUILD_SCRIPTS" ON)
 
 
 #-----------------------------------------------------------------------
@@ -88,7 +88,7 @@ option(SQLITE_MEMDEBUG "Build SQLite memory debug features" OFF)
 
 if(SQLITE_ENABLE_ICU)
   # Used in 'cmr_build_rules_sqlite3.cmake'.
-  set(LIBCMAKER_ICU_SRC_DIR ${ICU_lib_DIR})
+  set(LIBCMAKER_ICU_SRC_DIR ${ICU_lib_DIR} CACHE PATH "LIBCMAKER_ICU_SRC_DIR")
 endif()
 
 cmr_find_package(
