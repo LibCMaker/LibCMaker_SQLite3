@@ -46,6 +46,14 @@
   # https://www.sqlite.org/2018/sqlite-amalgamation-3240000.zip
   # https://www.sqlite.org/2020/sqlite-amalgamation-3320300.zip
   set(base_url "https://www.sqlite.org/2020")
+
+  # Workaround for the macOS and iOS on the Travis CI.
+  if($ENV{TRAVIS} AND APPLE)
+    set(base_url
+      "https://github.com/LibCMaker/LibCMaker_Lib_Sources/raw/master/SQLite3"
+    )
+  endif()
+
   set(src_dir_name    "sqlite-${version}")
   set(arch_file_name  "${src_dir_name}.zip")
   set(unpack_to_dir   "${unpacked_dir}/${src_dir_name}")
