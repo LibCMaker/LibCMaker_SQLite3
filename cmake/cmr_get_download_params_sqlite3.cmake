@@ -48,7 +48,8 @@
   set(base_url "https://www.sqlite.org/2020")
 
   # Workaround for the macOS and iOS on the Travis CI.
-  if(ENV{TRAVIS} AND APPLE)
+  set(IS_TRAVIS $ENV{TRAVIS})
+  if(IS_TRAVIS AND APPLE)
     set(base_url
       "https://github.com/LibCMaker/LibCMaker_Lib_Sources/raw/master/SQLite3"
     )
