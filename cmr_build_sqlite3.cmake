@@ -30,7 +30,7 @@
 #-----------------------------------------------------------------------
 
 set(SQLITE3_lib_NAME "SQLite3")
-set(SQLITE3_lib_VERSION "3.32.3" CACHE STRING "SQLITE3_lib_VERSION")
+set(SQLITE3_lib_VERSION "3.36.0" CACHE STRING "SQLITE3_lib_VERSION")
 set(SQLITE3_lib_DIR "${CMAKE_CURRENT_LIST_DIR}" CACHE PATH "SQLITE3_lib_DIR")
 
 # To use our Find<LibName>.cmake.

@@ -27,10 +27,13 @@
     set(arch_file_sha
       "fed8b1c04c63ce200773586422c9976b54f408cc")
   endif()
-
   if(version VERSION_EQUAL "3.32.3")
     set(arch_file_sha
       "0c805bea134712a903290a26b2a61c3a8a3bd8cc")
+  endif()
+  if(version VERSION_EQUAL "3.36.0")
+    set(arch_file_sha
+      "0c049c365896b71b6e291c9a262d2d0fbce7b4e6")
   endif()
 
   include(cmr_get_version_parts)
@@ -46,7 +49,7 @@
   # https://www.sqlite.org/2018/sqlite-amalgamation-3240000.zip
   # https://www.sqlite.org/2020/sqlite-amalgamation-3320300.zip
   # www.sqlite.org has mirrors: www2.sqlite.org and www3.sqlite.org
-  set(base_url "https://www.sqlite.org/2020")
+  set(base_url "https://www.sqlite.org/2021")
 
   set(src_dir_name    "sqlite-${version}")
   set(arch_file_name  "${src_dir_name}.zip")
