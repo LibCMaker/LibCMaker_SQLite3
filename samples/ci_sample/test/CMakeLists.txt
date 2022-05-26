@@ -23,7 +23,7 @@
 
 # Testing with Google Test.
 if(BUILD_TESTING)
-  cmr_common_sample_test_1st_part()
+  cmr_common_test_part()
 
   target_sources(${test_NAME}
     PRIVATE
@@ -36,6 +36,4 @@ if(BUILD_TESTING)
 
   # SQLite3
   target_link_libraries(${test_NAME} PRIVATE sqlite3)
-
-  cmr_common_sample_test_2nd_part()
 endif()

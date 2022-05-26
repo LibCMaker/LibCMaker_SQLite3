@@ -24,21 +24,24 @@
 set(LibCMaker_LIB_DIR "${CMAKE_CURRENT_LIST_DIR}/libs")
 set(LibCMaker_DIR "${LibCMaker_LIB_DIR}/LibCMaker")
 
-include(${LibCMaker_DIR}/samples/cmr_get_cmake_min_ver.cmake NO_POLICY_SCOPE)
+include("${LibCMaker_DIR}/cmake/cmr_get_cmake_min_ver.cmake" NO_POLICY_SCOPE)
 cmr_get_cmake_min_ver()
 cmake_minimum_required(VERSION ${cmr_CMAKE_MIN_VER})
+
+include("${LibCMaker_DIR}/samples/cmr_samples_common_macros.cmake")
+cmr_common_sample_part__before_project()
 
 # TODO: C lang.
 project(LibCMaker_SQLite3_Compile_Test CXX C)
 
-include(${LibCMaker_DIR}/samples/cmr_samples_common_macros.cmake)
+cmr_common_sample_part__project_settings()
 
 
 #-----------------------------------------------------------------------
-# Common sample 1st part
+# Common sample part
 #-----------------------------------------------------------------------
 
-cmr_common_sample_1st_part()
+cmr_common_sample_part__add_executable()
 
 
 #-----------------------------------------------------------------------
@@ -72,13 +75,6 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
 
 # SQLite3
 target_link_libraries(${PROJECT_NAME} PRIVATE sqlite3)
-
-
-#-----------------------------------------------------------------------
-# Common sample 2nd part
-#-----------------------------------------------------------------------
-
-cmr_common_sample_2nd_part()
 
 
 #-----------------------------------------------------------------------
