@@ -49,8 +49,10 @@ cmr_common_sample_part__add_executable()
 #-----------------------------------------------------------------------
 
 if(SQLITE_ENABLE_ICU)
-  include(${LibCMaker_LIB_DIR}/LibCMaker_ICU/cmr_build_icu.cmake)
   # NOTE: must be 'cmr_build_icu_host_tools.cmake' for Android and iOS.
+  #include(${LibCMaker_LIB_DIR}/LibCMaker_ICU/cmr_build_icu.cmake)
+
+  include(${LibCMaker_LIB_DIR}/LibCMaker_Skia/cmr_build_skia.cmake)
 endif()
 
 include(${LibCMaker_LIB_DIR}/LibCMaker_SQLite3/cmr_build_sqlite3.cmake)
@@ -66,7 +68,10 @@ target_sources(${PROJECT_NAME}
   PRIVATE
     ${example_src_DIR}/example.cpp
 )
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
+set_target_properties(${PROJECT_NAME} PROPERTIES
+  CXX_STANDARD 11
+  C_STANDARD 11
+)
 
 
 #-----------------------------------------------------------------------
@@ -75,6 +80,11 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
 
 # SQLite3
 target_link_libraries(${PROJECT_NAME} PRIVATE sqlite3)
+
+if(SQLITE_ENABLE_ICU)
+  # ICU
+  target_link_libraries(${PROJECT_NAME} PRIVATE ICU::ICU)
+endif()
 
 
 #-----------------------------------------------------------------------

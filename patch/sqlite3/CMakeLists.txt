@@ -26,7 +26,7 @@
 
 cmake_minimum_required(VERSION 3.4)
 
-# ICU is C++ library, then CXX lang. 
+# ICU is C++ library, then CXX lang.
 project(sqlite3 CXX C)
 
 
@@ -206,8 +206,10 @@ else()
 endif()
 
 if(SQLITE_ENABLE_ICU)
-  find_package(ICU REQUIRED COMPONENTS i18n uc data)
-  target_link_libraries(sqlite3 PRIVATE ICU::i18n ICU::uc ICU::data)
+  #find_package(ICU REQUIRED COMPONENTS i18n uc data)
+  #target_link_libraries(sqlite3 PRIVATE ICU::i18n ICU::uc ICU::data)
+  find_package(Skia REQUIRED)
+  target_link_libraries(sqlite3 PRIVATE ICU::ICU)
   # ICU is C++ library.
   set_target_properties(sqlite3 PROPERTIES LINKER_LANGUAGE CXX)
 endif()

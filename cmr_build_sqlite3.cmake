@@ -88,7 +88,8 @@ option(SQLITE_MEMDEBUG "Build SQLite memory debug features" OFF)
 
 if(SQLITE_ENABLE_ICU)
   # Used in 'cmr_build_rules_sqlite3.cmake'.
-  set(LIBCMAKER_ICU_SRC_DIR ${ICU_lib_DIR} CACHE PATH "LIBCMAKER_ICU_SRC_DIR")
+  #set(LIBCMAKER_ICU_SRC_DIR ${ICU_lib_DIR} CACHE PATH "LIBCMAKER_ICU_SRC_DIR")
+  set(LIBCMAKER_ICU_SRC_DIR ${SKIA_lib_DIR} CACHE PATH "LIBCMAKER_ICU_SRC_DIR")
 endif()
 
 cmr_find_package(

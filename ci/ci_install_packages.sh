@@ -23,33 +23,55 @@
 #    along with this program. If not, see <http://www.gnu.org/licenses/>.
 # ****************************************************************************
 
+# Used with LibCMaker_Skia
+
 set -e
 
 if [[ ${cmr_CI} == "ON" ]]; then
   set -v
 fi
 
-cmr_LIB_DEPS_NAMES=(
-  "LibCMaker"
-  "LibCMaker_GoogleTest"
-  #"LibCMaker_ICU"
-  "LibCMaker_Skia"
-  "LibCMaker_SQLite3"
-)
+
+if [[ ${cmr_CI} == "ON" ]]; then
+
+  if [[ ${cmr_HOST_OS} == "Linux" ]] ; then
+    sudo apt-get update
+
+    if [[ ! -x "$(command -v ninja)" ]]; then
+      echo "${cmr_ECHO_PREFIX} Install Ninja"
+      sudo apt-get install ninja-build
+    fi
+
+    if [[ ! -x "$(command -v python3.8)" ]]; then
+      echo "${cmr_ECHO_PREFIX} Install Python 3.8"
+      sudo apt-get install python3.8
+    fi
 
 
-# ==== CMake configuration params ====
+    if [[ ${cmr_TARGET} == "Linux" ]] ; then
+      sudo apt-get install mesa-common-dev
+      sudo apt-get install libglvnd-dev
+    fi
 
-# Used with LibCMaker_ICU
-#cmr_BUILD_HOST_TOOLS=ON
+    #if [[ ${cmr_TARGET} == "Android_Linux" ]] ; then
+    #fi
+  fi
 
-cmr_LIB_CMAKE_CONFIG_PARAMS=(
-  -DSQLITE_ENABLE_ICU=ON
-)
+  if [[ ${cmr_HOST_OS} == "Windows" ]] ; then
+    if [[ ! -x "$(command -v ninja)" ]]; then
+      echo "${cmr_ECHO_PREFIX} Install Ninja"
+      choco install ninja --no-progress
+    fi
 
-# Used with LibCMaker_ICU
-#if [[ ( ${cmr_TARGET} == "Android_Linux" ) || ( ${cmr_TARGET} == "Android_Windows" ) || ( ${cmr_TARGET} == "iOS" ) ]] ; then
-#  cmr_LIB_CMAKE_CONFIG_PARAMS+=(
-#    -DICU_CROSS_COMPILING=ON
-#  )
-#fi
+    #if [[ ${cmr_TARGET} == "Android_Windows" ]] ; then
+    #fi
+  fi
+
+  if [[ ${cmr_HOST_OS} == "macOS" ]] ; then
+    if [[ ! -x "$(command -v ninja)" ]]; then
+      echo "${cmr_ECHO_PREFIX} Install Ninja"
+      brew install ninja --quiet
+    fi
+  fi
+
+fi

@@ -36,4 +36,9 @@ if(BUILD_TESTING)
 
   # SQLite3
   target_link_libraries(${test_NAME} PRIVATE sqlite3)
+
+  if(SQLITE_ENABLE_ICU)
+    # ICU
+    target_link_libraries(${test_NAME} PRIVATE ICU::ICU)
+  endif()
 endif()
